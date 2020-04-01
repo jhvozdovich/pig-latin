@@ -1,8 +1,6 @@
 function pigLatin(word) {
   var letters = /[A-Za-z]/;
   var vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-  console.log(word);
-  console.log(typeof(word));
   var wordArray = word.split("");
   var newArray = [];
 
@@ -24,16 +22,12 @@ $(document).ready(function(){
 
     var results = [];
 
-    console.log(userSentence);
-    console.log(sentenceLength);
-    console.log(userSentenceArray);
     if (sentenceLength > 0) {
-      for (var i = 0; i < userSentenceArray.length; i++) {
-        var newString = userSentenceArray[i].toString();
-        console.log(typeof(newString));
+      userSentenceArray.forEach(function(word) {
+        var newString = word.toString();
         var newWord = pigLatin(newString);
         results.push(newWord);
-      }
+      })
     } else {
       alert("Please enter your words to translate!");
     }
