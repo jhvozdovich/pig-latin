@@ -7,11 +7,14 @@ function pigLatin(word) {
   wordArray.forEach(function(character) {
     if (!(character.match(letters))) {
       newArray.push(character);
-    } else if (character[0].match(vowels)) {
-      newArray.push(character + "way");
-
+    } else if (character.match(vowels)) {
+      newArray.push(character);
     }
   });
+
+  if (wordArray[0].match(vowels)) {
+    newArray.push("way")
+  }
 
   return newArray.join("");
 }
