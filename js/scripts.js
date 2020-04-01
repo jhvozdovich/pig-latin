@@ -1,13 +1,16 @@
 function pigLatin(word) {
   var letters = /[A-Za-z]/;
-  var vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  var vowels = /[aeiouAEIOU]/;
   var wordArray = word.split("");
   var newArray = [];
 
   wordArray.forEach(function(character) {
     if (!(character.match(letters))) {
       newArray.push(character);
-    } 
+    } else if (character[0].match(vowels)) {
+      newArray.push(character + "way");
+
+    }
   });
 
   return newArray.join("");
