@@ -19,7 +19,7 @@ _This exercise accepts a string of user input and outputs that string transforme
 
 ## Known Bugs
 
-No known bugs at the time of this version.
+This program is able to translate single words with vowels or consonants into pig latin. Multiple words and special characters currently produce errors.
 
 ## Support and contact details
 

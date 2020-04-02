@@ -1,27 +1,11 @@
 function pigLatin(word) {
-  var letters = /[A-Za-z]/;      // /^[A-Za-z]+$/
-  //var vowels = /[aeiouAEIOU]/;
-  var vowels = /^[aeiou]$/;   // /[aeiouAEIOU] previous
-
-  //var consonants = /[bcdfghjklmnpqrstvwxys]/gi - regex for consonants
+  var letters = /[A-Za-z]/;      
+  var vowels = /^[aeiou]$/;  
   
   var wordArray = word.split("");
   var newArray = [];
-  var endingArray =[];
 
-  // wordArray.forEach(function(character) {
-  //   //var firstVowel = wordArray.findIndex();
-  //   //console.log(firstVowel);
-  //   if (!(character.match(letters))) {
-  //     newArray.push(character);
-  //     return newArray;
-  //   } else if (character.match(vowels)) {
-  //     newArray.push(character);
-  //   } else if (!character.match(vowels)) {
-  //     newArray.push(character);
-  //   }
-  // });
-  function firstVowel(word) {
+  function findFirstVowel(word) {
     var vowelIndexArray = [];
     wordArray.forEach(function(letter) {
       if (letter.match(vowels)) {
@@ -29,9 +13,10 @@ function pigLatin(word) {
         vowelIndexArray.push(vowelIndex);
       }
     })
-     console.log("first vowel index " + Math.min.apply(Math, vowelIndexArray));
      return Math.min.apply(Math, vowelIndexArray);
     }
+
+  var firstVowel = findFirstVowel(wordArray);
 
   if (wordArray[0].match(vowels)) {
     var newArray = wordArray;
@@ -39,49 +24,16 @@ function pigLatin(word) {
     return newArray;
   } else {
     
-    for (var i = 0; i < firstVowel(wordArray); i++) {
+    for (var i = 0; i < firstVowel; i++) {
+      
       if (!wordArray[i].match(vowels)) { 
-        newArray.push(wordArray[i]);
-        console.log(newArray);
+        newArray.push(wordArray[i], "ay");
         continue;
       }
     }
-
-    return newArray;
-    //return wordArray.toString().substr(firstVowel(wordArray)) + newArray.toString() + "ay";
+    var finalArray = (wordArray.slice(firstVowel) + newArray).split(",");
+    return finalArray.join("");
   }
-    // wordArray.forEach(function(character){
-    //   while (!character.match(vowels)) {
-      
-    //     newArray.push(character);
-    //     console.log(newArray);
-    //     return newArray
-    //   } 
-
-    // })
-  
-
-  // console log first consonants- isolate
-  // push to a new array
-  // create new version of original array to subtract starting consonants
-  // add new array + ay to end of subtracted array
-
-    // wordArray.forEach(function(character) {
-    //   console.log("original character " + character);
-    //   if (!character.match(vowels)) {
-    //     var beginningLetters = wordArray.shift();
-    //     console.log("beginning letters " + beginningLetters);
-    //     console.log("wordArray " + wordArray);
-    //     endingArray.push(beginningLetters);
-    //     console.log("endingArray " + endingArray);
-    //     return endingArray;
-    //   } else {
-    //     return wordArray;
-    //   }
-    // })
-  //   // newArray = wordArray + endingArray + "ay";
-  // } 
-  // return newArray;
 }
 
 $(document).ready(function(){
